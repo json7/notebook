@@ -36,7 +36,7 @@ int main()
       exit(0);
     }
   }
-
+  //在一些老版本的系统上,系统调用如果被信号中断,那么系统调用很可能会提前返回,并且返回一个EINTR的错误
   while ((n=read(STDIN_FILENO, buf, sizeof(buf))) < 0) {
     //如果是信号造成的终端,则忽略错误继续read
     if (errno != EINTR) {
